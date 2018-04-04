@@ -102,6 +102,91 @@ for index in 0..<numArr.count {
 }
 
 
+// MARK: - 函数和闭包
+
+/*
+ 1、使用 func 声明一个函数。调用函数使用他的名字加上小括号中的参数列表。使用 -> 分隔参数的名字和返回值类型。
+ 2、使用元组(tuple)来返回多个值。
+ 3、函数可以接受可变参数个数，收集到一个数组中。
+ 4、函数可以嵌套。内嵌函数可以访问其定义所在函数的变量。可以使用内嵌函数来组织代码，避免过长和过于复杂。
+ 5、一个函数可以接受其他函数作为参数。
+ 6、函数实际是闭包的特殊情况。可以写一个闭包而无需名字，只需要放在大括号中即可。使用 in 到特定参数和主体的返回值。
+ 7、编写闭包时有多种选项。当一个闭包的类型是已知时，例如代表回调，你可以忽略其参数和返回值，或两者。单一语句的闭包可以直接返回值。
+ 8、可以通过数字而不是名字来引用一个参数，这对于很短的闭包很有用。一个闭包传递其最后一个参数到函数作为返回值。
+ **/
+func sayHello(name: String) {
+    print("Hello, \(name)");
+}
+func addCalclulator(num1: Int, num2: Int) -> Int {
+    return num1 + num2;
+}
+sayHello(name: "Alex");
+let fx = 1;
+let fy = 2;
+print("\(fx) + \(fx) = \(addCalclulator(num1: fx, num2: fx))");
+// 元组
+func persionInfo() -> (String, Int, String) {
+    let name = "Alex";
+    let age = 18;
+    let phoneNum = "16888888888";
+    
+    return (name, age, phoneNum);
+}
+let (name, age, phoneNum) = persionInfo();
+print("\(name) 年年 \(age) ，电话是：\(phoneNum)");
+print("返回元组值：\(persionInfo())");
+// 可变参数
+func addCalculator2(nums: Int...) -> Int {
+    var result = 0;
+    for num in nums {
+        result += num;
+    }
+    
+    return result;
+}
+let addResult = addCalculator2(nums: 1, 2, 3, 4, 5);
+print("[1, 5]的总和为：\(addResult)");
+// 函数嵌套（类型一）
+func addCalculator3(nums: Int...) -> Int {
+    var result = 0;
+    // inner method（必须先声明，再使用）
+    func innerAddCalculater(num: Int) {
+        result += num;
+    }
+    
+    for num in nums {
+        innerAddCalculater(num: num);
+    }
+    
+    
+    
+    return result;
+}
+// 函数嵌套（类型二）
+func addCalculator4() -> Int {
+    var result = 0;
+    // inner method（必须先声明，再使用）
+    func innerAddCalculater(num1: Int, num2: Int) -> Int {
+        return num1 + num2;
+    }
+    
+    result = innerAddCalculater(num1: 1, num2: 1);
+    
+    return result;
+}
+print("基础加法 1 + 1 = \(addCalculator4())");
+// 闭包
+//numArr.map({
+//    (num: Int) -> Int in
+//    let result = 2 * num;
+//    
+//    return result;
+//});
+// FIXME: - 需要更深入了解闭包的定义和使用
+
+
+
+
 
 
 
