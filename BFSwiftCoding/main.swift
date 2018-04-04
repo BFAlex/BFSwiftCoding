@@ -185,8 +185,58 @@ print("基础加法 1 + 1 = \(addCalculator4())");
 // FIXME: - 需要更深入了解闭包的定义和使用
 
 
+// MARK: - 类和对象
 
+/*
+ 1、使用 class 可以创建一个类。一个属性的声明则是在类里作为常量或变量声明的，除了是在类的上下文中。方法和函数也是这么写的。
+ 2、通过在类名后加小括号来创建类的实例。使用点语法来访问实例的属性和方法。
+ 3、在创建类实例时，可以使用init构造器设置类
+ 4、使用 deinit 来创建一个析构器，来执行对象销毁时的清理工作。
+ 
+ 5、子类包括其超类的名字，以冒号分隔。在继承标准根类时无需声明，所以你可以忽略超类。
+ 6、子类的方法可以通过标记 override 重载超类中的实现，而没有 override 的会被编译器看作是错误。编译器也会检查那些没有被重载的方法。
+ 
+ 7、属性增加有 getter 和 setter ，还可以设置 willSet 和 didSet 方法。
+ **/
 
+class OneClass {
+    
+    let note = "Swift的类定义是可以不用实现继承关系的";
+    
+    func showNote() -> String {
+        return note;
+    }
+}
+print("关于自定义一个类，\(OneClass().showNote())");
+// 构造器传参
+class ClassTwo {
+    
+    var num: Int;
+    
+    init(num: Int) {
+        self.num = num;
+    }
+    
+    func showNum() {
+        print("通过构造器设置的参数值：\(self.num)");
+    }
+}
+print("构造器传参的使用：");
+ClassTwo(num: 6).showNum()
+// 属性的 setter 和 getter
+class ClassThree: NSObject {
+    
+    var vnum: Int {
+        get {
+            return self.vnum * 2;
+        }
+        set {
+            self.vnum = newValue;
+        }
+    }
+    
+    
+}
 
 
 
