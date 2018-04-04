@@ -234,9 +234,54 @@ class ClassThree: NSObject {
             self.vnum = newValue;
         }
     }
-    
-    
 }
 
 
+// MARK: - 枚举与结构
 
+/*
+ 1、使用 enum 来创建枚举。有如类和其他命名类型，枚举可以有方法。
+ 2、一个枚举的实例成员可以拥有实例的值。相同枚举成员实例可以有不同的值。
+ **/
+
+enum Num_ENUM: Int {
+    case one
+    case two, three
+    
+    func num_EnumShow() -> String {
+        
+        switch self {
+        case .one:
+            print("枚举类型一");
+            return "枚举类型一";
+        default:
+            print("枚举类型二||三");
+            return "枚举类型二||三";
+        }
+    }
+}
+let one = Num_ENUM.one;
+print("整形枚举类型首默认值：\(one)");
+print("one.rawValue: \(one.rawValue)");
+print("枚举中的方法调用：\(one.num_EnumShow())");
+
+enum Str_ENUM: String {
+    case a
+    case b, c
+    
+    func Str_EnumShow() -> String {
+        
+        switch self {
+        case .a:
+            print("str枚举类型a");
+            return "str枚举类型a";
+        default:
+            print("str枚举类型b||c");
+            return "str枚举类型b||c";
+        }
+    }
+}
+let b_enum = Str_ENUM.b;
+print("case值：\(b_enum)");
+print("case的默认值：\(b_enum.rawValue)");
+print("枚举中的方法调用：\(b_enum.Str_EnumShow())");
